@@ -126,6 +126,10 @@ function getAllValuesAndCallApi(message) {
     // Lấy giá trị từ tất cả các thẻ button
     var values = getAllValues();
 
+    if (!localStorage.getItem("isLogin")) {
+        window.location.href = routeLogin;
+    }
+
     // Gọi API để cập nhật dữ liệu trên server
     $.ajax({
         url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/' + keyUser + '.json',
@@ -230,6 +234,10 @@ async function validatePassOld(formDataJson) {
         var isMessageError = null;
         var passOld = formDataJson.passwordOldEdit;
 
+        if (!localStorage.getItem("isLogin")) {
+            window.location.href = routeLogin;
+        }
+
         // Wrap the jQuery AJAX call in a Promise
         const data = await new Promise((resolve, reject) => {
             $.ajax({
@@ -262,6 +270,11 @@ function getAllValuesAndCallApiUpdateInfo(message, formDataJson) {
     var values = getAllValues();
     values.fullname = formDataJson.fullnameEdit;
     values.password = formDataJson.passwordNewEdit;
+
+    if (!localStorage.getItem("isLogin")) {
+        window.location.href = routeLogin;
+    }
+    
     // Gọi API để cập nhật dữ liệu trên server
     $.ajax({
         url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/' + keyUser + '.json',
