@@ -367,9 +367,9 @@ h6 {
     transform: translate(0px, -9px) scale(0.97);
 }
 
-.formBox.level-reg .regTag.icon-add {
+/* .formBox.level-reg .regTag.icon-add {
     right: -60px !important;
-}
+} */
 
 .formBox.level-reg h2 {
     border-left-color: #fff;
@@ -394,7 +394,7 @@ h6 {
 }
 
 .formBox.level-reg .regTag {
-    animation: regTag 0.3s cubic-bezier(0.48, 0.55, 0.73, 0.78), regTag2 0.3s cubic-bezier(0.48, 0.55, 0.73, 0.78);
+    /* animation: regTag 0.3s cubic-bezier(0.48, 0.55, 0.73, 0.78), regTag2 0.3s cubic-bezier(0.48, 0.55, 0.73, 0.78); */
     animation-fill-mode: forwards;
 }
 
@@ -412,7 +412,7 @@ h6 {
 }
 
 .formBox.level-reg-revers .regTag {
-    animation: regTagR 0.3s cubic-bezier(0.48, 0.55, 0.73, 0.78), regTag2R 0.3s cubic-bezier(0.48, 0.55, 0.73, 0.78);
+    /* animation: regTagR 0.3s cubic-bezier(0.48, 0.55, 0.73, 0.78), regTag2R 0.3s cubic-bezier(0.48, 0.55, 0.73, 0.78); */
     animation-fill-mode: forwards;
 }
 
