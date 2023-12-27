@@ -1,0 +1,547 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.container {
+  text-align: center;
+}
+
+.red-text {
+  color: red;
+}
+
+.temperature-box {
+  background-color: #d1ecf1;
+  padding: 10px;
+  margin-top: 20px;
+  width: 180px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  font-weight: bold;
+}
+
+.action-buttons {
+  margin-top: 20px;
+}
+
+.custom-border {
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.btn-custom {
+  font-size: 1em;
+  height: 100% !important;
+  padding: 0;
+}
+
+.btn-alert {
+  border-radius: 50%;
+}
+
+.btn-default {
+  color: var(--bs-btn-disabled-color);
+  cursor: pointer;
+  background-color: var(--bs-btn-disabled-bg);
+  border-color: var(--bs-btn-disabled-border-color);
+  opacity: var(--bs-btn-disabled-opacity);
+  height: auto;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.btn-sos {
+  border-radius: 50%;
+  margin: auto;
+  padding: 2px 8px 2px;
+  width: 77px;
+}
+
+.btn-sos img {
+  padding: 0px;
+  margin: 6px 0px;
+  width: 60px;
+  height: 45px;
+}
+
+.title-company {
+  font-size: 1em;
+  margin-bottom: 0px;
+}
+
+.title-app {
+  margin-top: 40px;
+  font-size: small;
+  font-weight: bold;
+  font-size: 25px;
+  color: red;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.turn-on {
+  color: black;
+  background-color: #FBBE0E;
+  border-color: #FBBE0E;
+}
+
+.container-loading {
+  background-color: white;
+  width: 100vw;
+  height: 100vh;
+  margin: unset;
+  display: flex;
+}
+.tab-content#myTabContent{
+  /* height: calc(100vh - 60px); */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.nav-tabs.nav-custom {
+  display: flex;
+  position: fixed!important;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #FBBE0E;
+  margin-bottom: 0 !important;
+  border-bottom: 0 !important;
+  justify-content: space-evenly;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  height: 60px;
+  z-index: 999px;
+}
+
+.nav-tabs.nav-custom svg {
+  height: 40px;
+  color: black;
+}
+
+.nav-link.active svg {
+  color: blue;
+  position: relative;
+  top: -3px;
+}
+
+.nav-tabs.nav-custom .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  background-color: unset;
+  border-color: unset;
+  border: unset;
+}
+
+.btn-alert {
+  padding: 0px;
+  width: 65px;
+  height: 60px;
+  margin: auto;
+}
+
+.btn-alert svg {
+  width: 65px;
+  height: 60px;
+}
+
+.btn-alert .too-big-actually {
+  transform-origin: 9.5px 9.5px;
+  transform: scale(0.5);
+}
+
+.btn-alert .bell-whole {
+  /* animation: ring linear infinite; */
+  transform-origin: 9.5px 2.4781px;
+}
+.btn-alert.turn-on .bell-whole{
+  animation: ring 2s linear infinite;
+  transform-origin: 9.5px 2.4781px;
+}
+.btn-alert.turn-on .bell-part--ringer {
+  animation: ding 2s linear infinite;
+}
+.btn-alert.turn-on{
+  animation: blink 1s infinite;
+}
+.btn-alert .bell-part {
+  fill: currentColor;
+}
+
+.btn-sos.turn-on{
+  animation: blink 1s infinite;
+}
+.btn-sos.turn-on img{
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-5px);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  }
+  50% {
+    box-shadow: none; /* Khi chớp chớp, box shadow sẽ bị loại bỏ */
+  }
+}
+
+@keyframes ring {
+
+  0% {
+    transform: rotate(0deg);
+  }
+
+  1.5% {
+    transform: rotate(30deg);
+  }
+
+  2.5% {
+    transform: rotate(-25deg);
+  }
+
+  3.75% {
+    transform: rotate(20deg);
+  }
+
+  5.15% {
+    transform: rotate(-10deg);
+  }
+
+  6.65% {
+    transform: rotate(5deg);
+  }
+
+  8.0% {
+    transform: rotate(-2deg);
+  }
+
+  10.0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+
+}
+
+@keyframes ding {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  1.2% {
+    transform: translateX(4px);
+  }
+
+  1.5% {
+    transform: translateX(4px);
+  }
+
+  2.3% {
+    transform: translateX(-4px);
+  }
+
+  2.5% {
+    transform: translateX(-4px);
+  }
+
+  3.55% {
+    transform: translateX(4px);
+  }
+
+  3.75% {
+    transform: translateX(4px);
+  }
+
+  5.45% {
+    transform: translateX(-3px);
+  }
+
+  7.15% {
+    transform: translateX(2px);
+  }
+
+  9.0% {
+    transform: translateX(-1px);
+  }
+
+  11.0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+
+}
+
+.group-area {
+  display: flex;
+  width: 100%;
+  border: 1px;
+  height: 100px;
+  padding: 20px 0;
+  margin-top: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+
+/* csss page setting  */
+
+
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: black;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #454545;
+  border-radius: 3px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+.tab-setting .page-title {
+  margin-bottom: 20px;
+  font-size: 30px;
+  font-weight: normal;
+  position: sticky;
+  top: 0;
+}
+.tab-setting .settings-page {
+  background-color: #F8F9FA;
+  z-index: 1000;
+}
+.tab-setting .settings-page .settings-container {
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  padding-top: 40px;
+}
+
+.tab-setting .settings-page .settings-container .settings-title {
+  color: #454545;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.tab-setting .settings-page .settings-container .settings-section {
+  width: 100%;
+  border-top: 2px solid #454545;
+  padding-top: 10px;
+  margin-bottom: 20px;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form {
+  max-width: 400px;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-submit.right {
+  justify-content: flex-end;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-submit {
+  display: flex;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-submit .btn {
+  width: 50%;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-group.editable .input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-group.editable .input-group .form-control {
+  margin-bottom: 0;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-group.editable .input-group .btn {
+  height: 38px;
+  margin: 0 10px;
+  background-color: #e59500;
+  transition: all 0.5s;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-group.editable .input-group .btn:hover {
+  color: #e59500;
+  background-color: #e5dada;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-group.editable .input-group i {
+  cursor: pointer;
+  color: #454545;
+  transition: all 0.5s;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .my-form .form-group.editable .input-group i:hover {
+  color: #e59500;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .non-active-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .non-active-form p {
+  padding: 7px 15px;
+  margin-bottom: 0;
+  font-size: 1rem;
+  cursor: default;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .non-active-form i {
+  cursor: pointer;
+  color: #454545;
+  transition: all 0.5s;
+  margin-right: 10px;
+}
+
+.tab-setting .settings-page .settings-container .settings-section .non-active-form i:hover {
+  color: #e59500;
+  transform: scale(1.1);
+}
+
+.img-upload-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.img-upload-container label {
+  margin-bottom: 20px;
+  position: relative;
+  border-radius: 0.25rem;
+  height: 80px;
+  min-width: 80px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  background-size: contain;
+}
+
+.img-upload-container h4 {
+  text-align: left;
+  font-size: 16px;
+  color: grey;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.img-upload-container h4:hover {
+  color: white;
+}
+
+.img-upload-container .img-preview-container {
+  position: absolute;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.img-upload-container .img-preview {
+  background: center center no-repeat;
+  background-size: cover;
+  height: 80px;
+  width: 80px;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.img-upload-container .img-upload {
+  margin-bottom: 0;
+}
+
+.img-upload-container input {
+  display: none;
+}
+
+.img-upload-container .alert {
+  margin-top: 10px;
+  position: absolute;
+  bottom: 0px;
+  background-color: transparent;
+  border: 0;
+  color: #e59500;
+}
+
+.tab-setting .my-form {
+  visibility: visible;
+}
+
+.tab-setting .my-form .form-group .input-group {
+  border-radius: 0.25rem;
+  overflow: hidden;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.tab-setting .my-form .form-group .input-group input.form-control {
+  border: none;
+  padding: 10px 15px;
+  color: #e5dada;
+  font-family: 'Fira Sans', sans-serif;
+
+}
+
+.tab-setting .my-form .form-group .alert-input {
+  color: #e59500;
+  font-weight: 100;
+  font-size: 13px;
+}
+
+.tab-setting .my-form .form-submit {
+  width: 100%;
+}
+
+.tab-setting .my-form .form-submit .btn {
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: #FBBE0E!important;
+  color: black;
+  cursor: default;
+}
+
+.tab-setting .my-form .form-submit .btn:disabled {
+  opacity: 0.75;
+}
+
+.tab-setting .my-form .form-submit .btn:not(:disabled):not(.disabled) {
+  background-color: #e59500;
+}
+
+
+.settings-section .form-submit.right #btnLogout{
+  color: #fff;
+  background-color: #dc3545!important;
+  border-color: #dc3545;
+}
