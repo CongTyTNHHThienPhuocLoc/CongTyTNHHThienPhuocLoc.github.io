@@ -50,10 +50,12 @@ function toggleButton(button) {
         button.classList.add('turn-on');
         id.attr("value", true);
         message = "Bật cảnh báo " + id.attr("text-title") + " thành công";
+        playAudio(audioSOS, './mp3/sos.mp3');
     } else {
         button.classList.remove('turn-on');
         id.attr("value", false);
         message = "Tắt cảnh báo " + id.attr("text-title") + " thành công";
+        stopAudio(audioSOS);
     }
     getAllValuesAndCallApi(message);
 }
