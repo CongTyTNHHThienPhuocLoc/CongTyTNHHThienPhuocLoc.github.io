@@ -99,19 +99,19 @@ async function validatePass(userName, password) {
         });
         if(data == null){
             isMessageError = USER_NOT_EXSIT;
-            // notiMessage(isMessageError);
-            showAlert(isMessageError,'warning')
+            notiMessage(isMessageError);
+            // showAlert(isMessageError,'warning')
 
         }else if (data.password !== password) {
             isMessageError = PASS_NOT_FALSE;
-            // notiMessage(isMessageError);
-            showAlert(isMessageError,'warning')
+            notiMessage(isMessageError);
+            // showAlert(isMessageError,'warning')
         }
 
         return isMessageError ? true : false;
     } catch (error) {
-        // notiMessage(failConnectDatabase);
-        showAlert(failConnectDatabase,'warning')
+        notiMessage(failConnectDatabase);
+        // showAlert(failConnectDatabase,'warning')
         return true;
     }
 }
@@ -171,8 +171,8 @@ function getAllValuesAndCallApiCreateUser(message, formDataJson) {
         contentType: 'application/json',
         data: JSON.stringify(values),
         success: function (response) {
-            // notiMessage(message, icon = "success");
-            showAlert(message,'success')
+            notiMessage(message, icon = "success");
+            // showAlert(message,'success')
             frmInfoReg.find('input, textarea, select').val('');
             frmInfoReg.click();
             $.ajax({
@@ -186,15 +186,15 @@ function getAllValuesAndCallApiCreateUser(message, formDataJson) {
                 },
                 error: function (error) {
                     console.error('Error updating data:', error);
-                    // notiMessage(JSON.stringify(error));
-                    showAlert(JSON.stringify(error),'warning')
+                    notiMessage(JSON.stringify(error));
+                    // showAlert(JSON.stringify(error),'warning')
                 }
             });
         },
         error: function (error) {
             console.error('Error updating data:', error);
-            // notiMessage(JSON.stringify(error));
-            showAlert(JSON.stringify(error),'warning')
+            notiMessage(JSON.stringify(error));
+            // showAlert(JSON.stringify(error),'warning')
         }
     });
 
@@ -236,14 +236,14 @@ function validateFormReg(formDataJson) {
         }
     });
     if (isMessageError) {
-        // notiMessage(isMessageError);
-        showAlert(isMessageError,'warning')
+        notiMessage(isMessageError);
+        // showAlert(isMessageError,'warning')
     }
     // [2] mk mới, [3] xác nhận mk mới 
     if (formDataJson.passwordReg != formDataJson.passwordConfirmReg) {
         isMessageError = messPassNewAndConfirmDiff;
-        // notiMessage(isMessageError);
-        showAlert(isMessageError,'warning')
+        notiMessage(isMessageError);
+        // showAlert(isMessageError,'warning')
     }
     return isMessageError ? true : false;
 }
@@ -268,15 +268,15 @@ btnChangeReg.click(async function (e) {
         });
         if (!data) {
             isMessageError = failConnectDatabase;
-            // notiMessage(failConnectDatabase);
-            showAlert(failConnectDatabase,'warning')
+            notiMessage(failConnectDatabase);
+            // showAlert(failConnectDatabase,'warning')
         }
         usernameReg.val('user'+data['userIdCurrent']);
         usernameReg.attr('value', data['userIdCurrent']);
 
     } catch (error) {
-        // notiMessage(failConnectDatabase);
-        showAlert(failConnectDatabase,'warning')
+        notiMessage(failConnectDatabase);
+        // showAlert(failConnectDatabase,'warning')
     }
 });
 
