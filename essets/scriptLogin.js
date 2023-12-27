@@ -99,16 +99,19 @@ async function validatePass(userName, password) {
         });
         if(data == null){
             isMessageError = USER_NOT_EXSIT;
-            notiMessage(isMessageError);
+            // notiMessage(isMessageError);
+            showAlert(isMessageError,'warning')
 
         }else if (data.password !== password) {
             isMessageError = PASS_NOT_FALSE;
-            notiMessage(isMessageError);
+            // notiMessage(isMessageError);
+            showAlert(isMessageError,'warning')
         }
 
         return isMessageError ? true : false;
     } catch (error) {
-        notiMessage(failConnectDatabase);
+        // notiMessage(failConnectDatabase);
+        showAlert(failConnectDatabase,'warning')
         return true;
     }
 }
@@ -168,7 +171,8 @@ function getAllValuesAndCallApiCreateUser(message, formDataJson) {
         contentType: 'application/json',
         data: JSON.stringify(values),
         success: function (response) {
-            notiMessage(message, icon = "success");
+            // notiMessage(message, icon = "success");
+            showAlert(message,'success')
             frmInfoReg.find('input, textarea, select').val('');
             frmInfoReg.click();
             $.ajax({
@@ -182,13 +186,15 @@ function getAllValuesAndCallApiCreateUser(message, formDataJson) {
                 },
                 error: function (error) {
                     console.error('Error updating data:', error);
-                    notiMessage(JSON.stringify(error));
+                    // notiMessage(JSON.stringify(error));
+                    showAlert(JSON.stringify(error),'warning')
                 }
             });
         },
         error: function (error) {
             console.error('Error updating data:', error);
-            notiMessage(JSON.stringify(error));
+            // notiMessage(JSON.stringify(error));
+            showAlert(JSON.stringify(error),'warning')
         }
     });
 
@@ -230,17 +236,20 @@ function validateFormReg(formDataJson) {
         }
     });
     if (isMessageError) {
-        notiMessage(isMessageError);
+        // notiMessage(isMessageError);
+        showAlert(isMessageError,'warning')
     }
     // [2] mk mới, [3] xác nhận mk mới 
     if (formDataJson.passwordReg != formDataJson.passwordConfirmReg) {
         isMessageError = messPassNewAndConfirmDiff;
-        notiMessage(isMessageError);
+        // notiMessage(isMessageError);
+        showAlert(isMessageError,'warning')
     }
     return isMessageError ? true : false;
 }
 
 btnChangeReg.click(async function (e) {
+    $('.addFocus').addClass('focus');
     try {
         var isMessageError = null;
         // Wrap the jQuery AJAX call in a Promise
@@ -259,12 +268,33 @@ btnChangeReg.click(async function (e) {
         });
         if (!data) {
             isMessageError = failConnectDatabase;
-            notiMessage(failConnectDatabase);
+            // notiMessage(failConnectDatabase);
+            showAlert(failConnectDatabase,'warning')
         }
         usernameReg.val('user'+data['userIdCurrent']);
         usernameReg.attr('value', data['userIdCurrent']);
 
     } catch (error) {
-        notiMessage(failConnectDatabase);
+        // notiMessage(failConnectDatabase);
+        showAlert(failConnectDatabase,'warning')
     }
 });
+
+
+function showAlert(message, alertType = "success") {
+    // Create an alert element
+    var alertElement = document.createElement("div");
+    alertElement.classList.add("alert", "alert-" + alertType, "position-fixed", "top-0", "w-100", "text-center", "m-0");
+    alertElement.setAttribute("role", "alert");
+    alertElement.innerHTML = message;
+
+    // Append the alert to the body
+    document.querySelector('.messError').appendChild(alertElement);
+    document.querySelector('.messError').style.setProperty("display", "flex", "important");
+
+    // Set a timeout to remove the alert after a few seconds
+    setTimeout(function () {
+        alertElement.remove();
+        document.querySelector('.messError').style.setProperty("display", "none", "important");
+    }, 2000); // Adjust the timeout as needed
+}

@@ -184,9 +184,9 @@ h6 {
 }
 
 .formBox .regTag {
-    line-height: 141px;
+    line-height: 141px!important;
     box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.45);
-    border-radius: 50%;
+    border-radius: 50%!important;
     background-color: #e59500;
     color: #fff;
     text-align: center;
@@ -194,7 +194,7 @@ h6 {
     height: 100px !important;
     position: absolute;
     right: 0px;
-    top: 40px;
+    top: 40px!important;
     z-index: 2;
 }
 

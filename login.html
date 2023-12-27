@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-     <link rel="stylesheet" href="./essets/styleLogin.css?v=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./essets/styleLogin.css?v=1">
     <link rel="icon" href="./image/icon-alert-removebg.png">
     <title>THIẾT BỊ BÁO CHÁY 8 VÙNG</title>
 </head>
@@ -47,9 +49,8 @@
                         <u></u>
                     </div>
                     <button class="btn btn-confirm"><span>Xác nhận</span><u></u>
-                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 415.582 415.582"
-                            xml:space="preserve">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            x="0px" y="0px" viewBox="0 0 415.582 415.582" xml:space="preserve">
                             <path d="M411.47,96.426l-46.319-46.32c-5.482-5.482-14.371-5.482-19.853,0L152.348,243.058l-82.066-82.064
                                             c-5.48-5.482-14.37-5.482-19.851,0l-46.319,46.32c-5.482,5.481-5.482,14.37,0,19.852l138.311,138.31
                                             c2.741,2.742,6.334,4.112,9.926,4.112c3.593,0,7.186-1.37,9.926-4.112L411.47,116.277c2.633-2.632,4.111-6.203,4.111-9.925
@@ -84,32 +85,38 @@
                 </form>
             </div> -->
             <div class="box registerBox ">
-            <span class="reg_bg"></span>
-            <h2>Đăng ký</h2>
-            <form class="form" id="frmInfoReg">
-                <div class="f_row focus">
-                <label>Username</label>
-                <input type="text" name="usernameReg" id="usernameReg" disabled value="N/A" class="input-field" required>
-                <u></u>
-                </div>
-                <div class="f_row">
-                <label>Mật khẩu</label>
-                <input type="password" name="passwordReg" id="passwordReg" class="input-field" required>
-                <u></u>
-                </div>
-                <div class="f_row last">
-                <label>Nhập lại mật khẩu</label>
-                <input type="password" name="passwordConfirmReg" id="passwordConfirmReg"  class="input-field" required>
-                <u></u>
-                </div>
-                <button class="btn-large" id="btnReg">Xác nhận</button>
-            </form>
+                <span class="reg_bg"></span>
+                <h2>Đăng ký</h2>
+                <form class="form" id="frmInfoReg">
+                    <div class="addFocus f_row focus">
+                        <label>Username</label>
+                        <input type="text" name="usernameReg" id="usernameReg" disabled value="N/A" class="input-field"
+                            required>
+                        <u></u>
+                    </div>
+                    <div class="f_row">
+                        <label>Mật khẩu</label>
+                        <input type="password" name="passwordReg" id="passwordReg" class="input-field" required>
+                        <u></u>
+                    </div>
+                    <div class="f_row last">
+                        <label>Nhập lại mật khẩu</label>
+                        <input type="password" name="passwordConfirmReg" id="passwordConfirmReg" class="input-field"
+                            required>
+                        <u></u>
+                    </div>
+                    <div class="f_row messError d-none">
+                    </div>
+                    <button class="btn-large" id="btnReg">Xác nhận</button>
+                </form>
             </div>
             <a class="regTag icon-add btnChangeReg">
-            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve">
-                <path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z" />
-            </svg>
-        
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 357 357"
+                    style="enable-background:new 0 0 357 357;" xml:space="preserve">
+                    <path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z" />
+                </svg>
+
             </a>
         </div>
     </div>
@@ -119,11 +126,14 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-database-compat.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.1/dist/sweetalert2.all.js"></script>
