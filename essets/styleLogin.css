@@ -190,8 +190,8 @@ h6 {
     background-color: #e59500;
     color: #fff;
     text-align: center;
-    width: 100px!important;
-    height: 100px!important;
+    width: 100px !important;
+    height: 100px !important;
     position: absolute;
     right: 0px;
     top: 40px;
@@ -350,11 +350,13 @@ h6 {
     transform: translate(0px, 20px);
     transition-delay: 0.25s;
 }
+
 .container-content {
     display: flex;
     height: 100vh;
 }
-.formBox{
+
+.formBox {
     margin: auto;
 }
 
@@ -365,7 +367,7 @@ h6 {
 }
 
 .formBox.level-reg .regTag.icon-add {
-    right: -60px!important;
+    right: -60px !important;
 }
 
 .formBox.level-reg h2 {
