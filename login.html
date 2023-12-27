@@ -86,10 +86,10 @@
             <div class="box registerBox ">
             <span class="reg_bg"></span>
             <h2>Đăng ký</h2>
-            <form class="form">
-                <div class="f_row">
+            <form class="form" id="frmInfoReg">
+                <div class="f_row focus">
                 <label>Username</label>
-                <input type="text" name="usernameReg" id="usernameReg" class="input-field" required>
+                <input type="text" name="usernameReg" id="usernameReg" disabled value="N/A" class="input-field" required>
                 <u></u>
                 </div>
                 <div class="f_row">
@@ -102,10 +102,10 @@
                 <input type="password" name="passwordConfirmReg" id="passwordConfirmReg"  class="input-field" required>
                 <u></u>
                 </div>
-                <button class="btn-large">Xác nhập</button>
+                <button class="btn-large" id="btnReg">Xác nhập</button>
             </form>
             </div>
-            <a class="regTag icon-add">
+            <a class="regTag icon-add btnChangeReg">
             <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve">
                 <path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z" />
             </svg>

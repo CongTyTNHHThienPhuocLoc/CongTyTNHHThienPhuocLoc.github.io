@@ -124,3 +124,147 @@ function notiMessage(isMessageError, icon = "warning") {
 }
 
 
+// register 
+var messNotFill               = 'Vui lòng điền đầy đủ thông tin';
+var messPassNewAndConfirmDiff = 'Xác nhận mật khẩu không giống mật khẩu';
+var failConnectDatabase       = "Kết nối database thất bại, vui lòng thử lại !";
+var wrongPassword             = "Sai mật khẩu";
+var success                   = "Thành công";
+var allDataFrm         = {};
+var usernameReg        = $('#usernameReg');
+var passwordReg        = $('#passwordReg');
+var passwordConfirmReg = $('#passwordConfirmReg');
+var btnReg             = $('#btnReg');
+var frmInfoReg         = $('#frmInfoReg');
+var btnChangeReg       = $('.btnChangeReg');
+
+
+btnReg.click(async function (e) {
+    e.preventDefault();
+    allDataFrm = frmInfoReg.serializeArray();
+
+    var formDataJson = {};
+    $.each(allDataFrm, function(index, field) {
+        formDataJson[field.name] = field.value;
+    });
+    // validate from
+    if (validateFormReg(formDataJson)) return;
+
+    getAllValuesAndCallApiCreateUser(success, formDataJson);
+});
+
+function getAllValuesAndCallApiCreateUser(message, formDataJson) {
+
+    var usernameReg        = $('#usernameReg').val();
+    var usernameRegId      = $('#usernameReg').attr("value");
+    var values = getAllValues();
+    values.username = usernameReg;
+    values.password = formDataJson['passwordReg'];
+
+    // Gọi API để cập nhật dữ liệu trên server
+    $.ajax({
+        url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/' + usernameReg + '.json',
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify(values),
+        success: function (response) {
+            notiMessage(message, icon = "success");
+            frmInfoReg.find('input, textarea, select').val('');
+            frmInfoReg.click();
+            $.ajax({
+                url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/config.json',
+                type: 'PUT',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    "userIdCurrent": parseInt(usernameRegId) + 1
+                }),
+                success: function (response) {
+                },
+                error: function (error) {
+                    console.error('Error updating data:', error);
+                    notiMessage(JSON.stringify(error));
+                }
+            });
+        },
+        error: function (error) {
+            console.error('Error updating data:', error);
+            notiMessage(JSON.stringify(error));
+        }
+    });
+
+}
+
+function getAllValues() {
+    var values = {};
+
+    // Duyệt qua mảng các ID và lấy giá trị từ các thẻ tương ứng
+    var ids = [
+        'area1', 'area2', 'area3', 'area4', 'area5',
+        'area6', 'area7', 'area8', 'sos', 'alert', 'temperature', 'fullname', 'username', 'password'
+    ];
+
+    for (var i = 0; i < ids.length; i++) {
+        var id = ids[i];
+        var value = $('#' + id).attr("value");
+        values[id] = value;
+
+        if (value === undefined) {
+            if (id == 'temperature' || id == 'fullname' || id == 'username' || id == 'password') {
+                values[id] = 'N/A';
+            } else {
+                values[id] = 'false';
+            }
+        }
+    }
+
+    return values;
+}
+
+
+function validateFormReg(formDataJson) {
+    var isMessageError = null;
+    $.each(formDataJson, function (index, value) {
+        if (!value) {
+            isMessageError = messNotFill;
+            return false;
+        }
+    });
+    if (isMessageError) {
+        notiMessage(isMessageError);
+    }
+    // [2] mk mới, [3] xác nhận mk mới 
+    if (formDataJson.passwordReg != formDataJson.passwordConfirmReg) {
+        isMessageError = messPassNewAndConfirmDiff;
+        notiMessage(isMessageError);
+    }
+    return isMessageError ? true : false;
+}
+
+btnChangeReg.click(async function (e) {
+    try {
+        var isMessageError = null;
+        // Wrap the jQuery AJAX call in a Promise
+        const data = await new Promise((resolve, reject) => {
+            $.ajax({
+                url: 'https://database-app-android-4c845-default-rtdb.firebaseio.com/config.json',
+                type: 'GET',
+                dataType: 'json',
+                success: function (responseData) {
+                    resolve(responseData);
+                },
+                error: function (error) {
+                    reject(error);
+                }
+            });
+        });
+        if (!data) {
+            isMessageError = failConnectDatabase;
+            notiMessage(failConnectDatabase);
+        }
+        usernameReg.val('user'+data['userIdCurrent']);
+        usernameReg.attr('value', data['userIdCurrent']);
+
+    } catch (error) {
+        notiMessage(failConnectDatabase);
+    }
+});
