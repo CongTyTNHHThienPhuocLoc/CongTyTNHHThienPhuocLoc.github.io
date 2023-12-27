@@ -296,5 +296,5 @@ function showAlert(message, alertType = "success") {
     setTimeout(function () {
         alertElement.remove();
         document.querySelector('.messError').style.setProperty("display", "none", "important");
-    }, 2000); // Adjust the timeout as needed
+    }, 3000); // Adjust the timeout as needed
 }
